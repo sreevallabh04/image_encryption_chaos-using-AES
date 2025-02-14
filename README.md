@@ -1,111 +1,63 @@
-# 🔒 Hybrid Cryptographic System for Secure Image Encryption
+# DNA-Based Image Encryption Using Chaos Theory
 
-This project implements secure image encryption using a **Hybrid Cryptographic Approach** that combines:
+## 📌 Overview
+This project implements **secure image encryption** using **DNA Cryptography and Chaos Theory**. It ensures ultra-high security by encoding images into DNA sequences, scrambling them using chaotic maps, and encrypting them with AES and XOR.
 
-✅ **AES (Advanced Encryption Standard)** – Encrypts image data.
-✅ **Chaotic Key Generation** – Uses the logistic map to create unpredictable AES keys.
-✅ **RSA Encryption** – Protects the AES key from exposure.
+## 🔑 Features
+- **DNA Encoding**: Converts image data into DNA sequences (A, T, C, G).
+- **Chaotic Scrambling**: Uses mathematical chaos for randomization.
+- **AES + XOR Encryption**: Ensures robust security.
+- **Reversible Decryption**: Recovers the original image without loss.
 
-This ensures high security, making it difficult for attackers to extract image information even if the encrypted data is intercepted.
-
----
-
-## 📂 Project Structure
-```
-sreevallabh04-image_encryption_chaos-using-aes/
-│── README.md           # Project documentation
-│── blockchain.py       # (Optional) Blockchain integration (To Be Implemented)
-│── chaos.py            # Generates chaotic AES keys
-│── decrypt.py          # Decrypts the image using AES
-│── encrypt.py          # Encrypts the image using AES
-│── hybrid_crypto.py    # Generates RSA keys & handles AES key encryption
-│── requirements.txt    # Required Python libraries
-│── utils.py            # Helper functions for padding/unpadding
-│── rsa_keys/           # Stores RSA keys
-│   ├── private.pem     # RSA Private Key (Keep this secret)
-│   ├── public.pem      # RSA Public Key (Used to encrypt AES key)
-│── images/
-│   ├── input.jpg       # Original image to be encrypted
-│   ├── encrypted.bin   # Encrypted image file
-│   ├── decrypted.jpg   # Decrypted image file
-│── key.bin             # Encrypted AES key (protected with RSA)
-```
-
----
-
-## ⚙️ How It Works
-
-### 🔹 AES Encrypts the Image
-1. The image is converted to raw byte data.
-2. It is padded to make its size a multiple of 16 bytes.
-3. AES encrypts the padded data using a chaotic key.
-
-### 🔹 RSA Secures the AES Key
-1. The AES key is generated using a **chaotic logistic map**.
-2. The AES key is encrypted using RSA (public key) and stored securely.
-
-### 🔹 Decryption Process
-1. The AES key is decrypted using RSA (private key).
-2. The image is decrypted using the recovered AES key.
-
----
-
-## 🚀 Installation & Setup
-
-### 🔹 Step 1: Install Required Libraries
-Run:
+## 🛠️ Installation
 ```bash
+git clone https://github.com/sreevallabh04/DNA-Based Image Encryption Using Chaos Theory.git
+cd dna-image-encryption
 pip install -r requirements.txt
 ```
-If you don’t have a `requirements.txt`, manually install:
+
+## 🚀 Usage
+### Encrypt an Image
 ```bash
-pip install pycryptodome opencv-python numpy
+python src/encrypt.py
 ```
 
-### 🔹 Step 2: Generate RSA Keys
-Before encryption, generate the RSA key pair:
+### Decrypt the Image
 ```bash
-python hybrid_crypto.py
+python src/decrypt.py
 ```
-This creates:
-- `rsa_keys/public.pem` → Used for encrypting AES keys.
-- `rsa_keys/private.pem` → Used for decrypting AES keys.
 
-### 🔹 Step 3: Encrypt an Image
-Place an image in the `images/` folder and run:
-```bash
-python encrypt.py
+## 📝 Folder Structure
 ```
-This will:
-✅ Generate a **chaotic AES key**.
-✅ Encrypt the AES key with **RSA** and store it in `key.bin`.
-✅ Encrypt the image and save it as `images/encrypted.bin`.
-
-### 🔹 Step 4: Decrypt the Image
-Run:
-```bash
-python decrypt.py
+👤 dna-image-encryption
+│── 📂 src
+│   ├── encrypt.py  # Encryption process
+│   ├── decrypt.py  # Decryption process
+│   ├── dna_crypto.py  # DNA encoding/decoding logic
+│   ├── chaos.py  # Chaotic scrambling functions
+│   ├── hybrid_crypto.py  # AES + XOR encryption
+│   ├── utils.py  # Helper functions
+│── 📂 images
+│   ├── original.png
+│   ├── encrypted.bin
+│   ├── decrypted.png
+│── requirements.txt
+│── README.md
 ```
-This will:
-✅ Decrypt the **AES key** using RSA.
-✅ Use the key to decrypt the **image**.
-✅ Save the decrypted image as `images/decrypted.jpg`.
 
----
+## 📈 Contrast: DNA-Based vs AES + Chaos + Blockchain
+| Feature | DNA-Based Encryption | AES + Chaos + Blockchain |
+|---------|----------------------|-------------------------|
+| Security Level | Ultra-High (Biological Encoding + Chaos) | High (AES + Chaos + Blockchain) |
+| Encryption Type | DNA Encoding + Chaos + AES | AES + Chaotic Scrambling |
+| Randomness | High (DNA & Chaos combined) | Moderate (Chaos only) |
+| Processing Time | Slower (DNA mapping overhead) | Faster (AES-based) |
+| Best For | Research, Bio-inspired Security | High-Speed Secure Applications |
 
-## 🔮 Future Improvements
-✔ Upgrade to **AES-GCM** instead of ECB (removes patterns in encrypted images).
-✔ Integrate **Blockchain** to store encrypted image hashes for integrity verification.
-✔ Use **Chaotic Pixel Shuffling** before encryption for added security.
+## 🔬 Research Significance
+- DNA cryptography is a rising field in quantum-secure encryption.
+- This project enhances security by integrating biology and mathematics.
 
----
-
-## 📜 License
-This project is **open-source** and free to use for educational purposes.
-
----
-
-## 👨‍💻 Author
-Developed by **Sreevallabh**  
-📧 For inquiries, contact: [srivallabhkakarala@gmail.com]
+## 📝 License
+MIT License
 
