@@ -3,6 +3,19 @@ import numpy as np
 from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto.PublicKey import RSA
 from utils import unpad
+from blockchain import Blockchain, hash_encrypted_image
+
+# Step 1: Compute Encrypted Image Hash
+image_hash = hash_encrypted_image()
+
+# Step 2: Verify Integrity Using Blockchain
+blockchain = Blockchain()
+if blockchain.verify_image_integrity(image_hash):
+    print("[✔] Encrypted image is authentic. Proceeding with decryption...")
+else:
+    print("[❌] Warning: The encrypted image has been modified or is not authentic!")
+    exit()
+
 
 # Load RSA Private Key
 with open("rsa_keys/private.pem", "rb") as f:

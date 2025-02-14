@@ -4,6 +4,7 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto.PublicKey import RSA
 from chaos import generate_chaotic_key
 from utils import pad
+from blockchain import Blockchain, hash_encrypted_image
 
 # Generate Chaotic AES Key
 aes_key = generate_chaotic_key()
@@ -40,3 +41,11 @@ with open("images/encrypted.bin", "wb") as file:
     file.write(encrypted_data)
 
 print("[✔] Image Encrypted Successfully & Saved as 'images/encrypted.bin'.")
+
+image_hash = hash_encrypted_image()
+
+# Step 2: Add Hash to Blockchain
+blockchain = Blockchain()
+blockchain.add_block(image_hash)
+
+print("[✔] Encrypted image hash stored in blockchain for integrity verification.")
