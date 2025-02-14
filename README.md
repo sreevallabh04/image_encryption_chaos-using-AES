@@ -1,111 +1,107 @@
-# 🔒 Hybrid Cryptographic System for Secure Image Encryption
+# 🔐 Image Encryption with Chaos & AES | Blockchain Integrity
 
-This project implements secure image encryption using a **Hybrid Cryptographic Approach** that combines:
+> **A hybrid encryption framework integrating AES, Chaos Theory, and Blockchain for secure image encryption & verification.**
 
-✅ **AES (Advanced Encryption Standard)** – Encrypts image data.
-✅ **Chaotic Key Generation** – Uses the logistic map to create unpredictable AES keys.
-✅ **RSA Encryption** – Protects the AES key from exposure.
+---
 
-This ensures high security, making it difficult for attackers to extract image information even if the encrypted data is intercepted.
+## 🚀 Features
+
+👉 **AES + Chaos-based Encryption** - Ensures strong encryption using AES combined with chaotic maps.  
+👉 **Hybrid Cryptography (AES + RSA)** - Uses RSA to securely exchange AES keys.  
+👉 **Blockchain Integration** - Verifies image integrity using blockchain-based ledger.  
+👉 **Histogram Analysis** - Compares original vs. encrypted image for security validation.  
+👉 **Secure Key Storage** - RSA keys and AES keys securely managed.  
 
 ---
 
 ## 📂 Project Structure
+
 ```
 sreevallabh04-image_encryption_chaos-using-aes/
-│── README.md           # Project documentation
-│── blockchain.py       # (Optional) Blockchain integration (To Be Implemented)
-│── chaos.py            # Generates chaotic AES keys
-│── decrypt.py          # Decrypts the image using AES
-│── encrypt.py          # Encrypts the image using AES
-│── hybrid_crypto.py    # Generates RSA keys & handles AES key encryption
-│── requirements.txt    # Required Python libraries
-│── utils.py            # Helper functions for padding/unpadding
-│── rsa_keys/           # Stores RSA keys
-│   ├── private.pem     # RSA Private Key (Keep this secret)
-│   ├── public.pem      # RSA Public Key (Used to encrypt AES key)
+│── README.md                # This file 🌜
+│── encrypt.py               # Image encryption module 🔒
+│── decrypt.py               # Image decryption module 🔓
+│── chaos.py                 # Chaos-based key generation 🌪️
+│── hybrid_crypto.py         # Hybrid AES + RSA encryption 🔑
+│── blockchain.py            # Blockchain verification for integrity ⛓️
+│── histogram_analysis.py    # Histogram comparison 🖼️
+│── utils.py                 # Helper utilities 🫠
+│── key.bin                  # AES encryption key 🔑
+│── blockchain_ledger.json   # Blockchain ledger data 🌜
 │── images/
-│   ├── input.jpg       # Original image to be encrypted
-│   ├── encrypted.bin   # Encrypted image file
-│   ├── decrypted.jpg   # Decrypted image file
-│── key.bin             # Encrypted AES key (protected with RSA)
+│   └── encrypted.bin        # Encrypted image file 📁
+│── rsa_keys/
+│   ├── private.pem          # RSA Private Key 🛥️
+│   └── public.pem           # RSA Public Key 🔑
 ```
 
 ---
 
-## ⚙️ How It Works
+## 🔧 Setup & Installation
 
-### 🔹 AES Encrypts the Image
-1. The image is converted to raw byte data.
-2. It is padded to make its size a multiple of 16 bytes.
-3. AES encrypts the padded data using a chaotic key.
-
-### 🔹 RSA Secures the AES Key
-1. The AES key is generated using a **chaotic logistic map**.
-2. The AES key is encrypted using RSA (public key) and stored securely.
-
-### 🔹 Decryption Process
-1. The AES key is decrypted using RSA (private key).
-2. The image is decrypted using the recovered AES key.
-
----
-
-## 🚀 Installation & Setup
-
-### 🔹 Step 1: Install Required Libraries
-Run:
+### 1️⃣ Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
-If you don’t have a `requirements.txt`, manually install:
+
+### 2️⃣ Run Encryption
 ```bash
-pip install pycryptodome opencv-python numpy
+python encrypt.py --input images/sample.png --output images/encrypted.bin
 ```
 
-### 🔹 Step 2: Generate RSA Keys
-Before encryption, generate the RSA key pair:
+### 3️⃣ Run Decryption
 ```bash
-python hybrid_crypto.py
+python decrypt.py --input images/encrypted.bin --output images/decrypted.png
 ```
-This creates:
-- `rsa_keys/public.pem` → Used for encrypting AES keys.
-- `rsa_keys/private.pem` → Used for decrypting AES keys.
 
-### 🔹 Step 3: Encrypt an Image
-Place an image in the `images/` folder and run:
+### 4️⃣ Verify Integrity via Blockchain
 ```bash
-python encrypt.py
+python blockchain.py --verify images/encrypted.bin
 ```
-This will:
-✅ Generate a **chaotic AES key**.
-✅ Encrypt the AES key with **RSA** and store it in `key.bin`.
-✅ Encrypt the image and save it as `images/encrypted.bin`.
 
-### 🔹 Step 4: Decrypt the Image
-Run:
+### 📊 Histogram Analysis
+Run this command to compare original vs. encrypted images:
 ```bash
-python decrypt.py
+python histogram_analysis.py --input images/sample.png --encrypted images/encrypted.bin
 ```
-This will:
-✅ Decrypt the **AES key** using RSA.
-✅ Use the key to decrypt the **image**.
-✅ Save the decrypted image as `images/decrypted.jpg`.
+**Output:** Two histogram images will be generated:
+- `histogramoriginal.png`
+- `histogramencrypted.png`
 
 ---
 
-## 🔮 Future Improvements
-✔ Upgrade to **AES-GCM** instead of ECB (removes patterns in encrypted images).
-✔ Integrate **Blockchain** to store encrypted image hashes for integrity verification.
-✔ Use **Chaotic Pixel Shuffling** before encryption for added security.
+## 🛡️ Security & Cryptographic Techniques
+
+| Method         | Description |
+|---------------|------------|
+| **AES-256**   | Symmetric encryption for image data 🔐 |
+| **Chaos Maps** | Pseudorandom chaotic sequences for key generation 🌪️ |
+| **RSA-4096**   | Asymmetric encryption for AES key exchange 🔑 |
+| **Blockchain** | Integrity verification using decentralized ledger ⛓️ |
 
 ---
 
-## 📜 License
-This project is **open-source** and free to use for educational purposes.
+## 🤖 Future Enhancements
+
+🔹 Quantum-Safe Cryptography (Post-Quantum Algorithms)  
+🔹 Advanced Blockchain Consensus (PoW / PoS)  
+🔹 Homomorphic Encryption for Secure Computation  
 
 ---
 
 ## 👨‍💻 Author
-Developed by **Sreevallabh**  
-📧 For inquiries, contact: [srivallabhkakarala@gmail.com]
+**Sreevallabh04 | Cybersecurity & Cryptography Enthusiast**  
+📧 Email: srivallabhkakarala@gmail.com  
+🌟 GitHub: github.com/sreevallabh04  
+
+---
+
+## 🔐 "Encrypt, Secure, and Trust Your Data." 🚀
+
+---
+
+## 📚 License
+This project is Open Source!
+
+---
 
