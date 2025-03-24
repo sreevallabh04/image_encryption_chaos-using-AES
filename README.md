@@ -1,171 +1,100 @@
-<<<<<<< HEAD
-# DNA-Based Image Encryption Using Chaos Theory
+# 🧬 DNA-Based Image Encryption with Chaos Theory & Blockchain
 
 ## 📌 Overview
-This project implements **secure image encryption** using **DNA Cryptography and Chaos Theory**. It ensures ultra-high security by encoding images into DNA sequences, scrambling them using chaotic maps, and encrypting them with AES and XOR.
+This project implements a sophisticated **hybrid image encryption system** that combines DNA cryptography, chaos theory, AES encryption, and blockchain technology. It provides ultra-high security by encoding images into DNA sequences, scrambling them using chaotic maps, encrypting with AES, and verifying integrity through blockchain.
 
-## 🔑 Features
-- **DNA Encoding**: Converts image data into DNA sequences (A, T, C, G).
-- **Chaotic Scrambling**: Uses mathematical chaos for randomization.
-- **AES + XOR Encryption**: Ensures robust security.
-- **Reversible Decryption**: Recovers the original image without loss.
+## 🔑 Key Features
+- **DNA Encoding & Decoding**: Converts image data to/from DNA sequences (A, T, C, G)
+- **Chaotic Scrambling**: Applies mathematics-based chaos for randomization
+- **AES Encryption**: Ensures robust security with standard cryptographic algorithms
+- **Blockchain Integration**: Verifies image integrity using a decentralized ledger
+- **Histogram Analysis**: Validates encryption quality by comparing original vs. encrypted histograms
+- **Reversible Process**: Allows complete recovery of the original image
 
 ## 🛠️ Installation
-=======
-# 🔐 Image Encryption with Chaos & AES | Blockchain Integrity
-
-> **A hybrid encryption framework integrating AES, Chaos Theory, and Blockchain for secure image encryption & verification.**
-
----
-
-## 🚀 Features
-
-👉 **AES + Chaos-based Encryption** - Ensures strong encryption using AES combined with chaotic maps.  
-👉 **Hybrid Cryptography (AES + RSA)** - Uses RSA to securely exchange AES keys.  
-👉 **Blockchain Integration** - Verifies image integrity using blockchain-based ledger.  
-👉 **Histogram Analysis** - Compares original vs. encrypted image for security validation.  
-👉 **Secure Key Storage** - RSA keys and AES keys securely managed.  
-
----
-
-## 📂 Project Structure
-
-```
-sreevallabh04-image_encryption_chaos-using-aes/
-│── README.md                # This file 🌜
-│── encrypt.py               # Image encryption module 🔒
-│── decrypt.py               # Image decryption module 🔓
-│── chaos.py                 # Chaos-based key generation 🌪️
-│── hybrid_crypto.py         # Hybrid AES + RSA encryption 🔑
-│── blockchain.py            # Blockchain verification for integrity ⛓️
-│── histogram_analysis.py    # Histogram comparison 🖼️
-│── utils.py                 # Helper utilities 🫠
-│── key.bin                  # AES encryption key 🔑
-│── blockchain_ledger.json   # Blockchain ledger data 🌜
-│── images/
-│   └── encrypted.bin        # Encrypted image file 📁
-│── rsa_keys/
-│   ├── private.pem          # RSA Private Key 🛥️
-│   └── public.pem           # RSA Public Key 🔑
-```
-
----
-
-## 🔧 Setup & Installation
-
-### 1️⃣ Install Dependencies
->>>>>>> 1999b992e8c30c15e755810997ec60d75a0b0cde
 ```bash
-git clone https://github.com/sreevallabh04/DNA-Based Image Encryption Using Chaos Theory.git
-cd dna-image-encryption
+git clone https://github.com/sreevallabh04/image_encryption_chaos-using-AES.git
+cd image_encryption_chaos-using-AES
 pip install -r requirements.txt
 ```
 
-<<<<<<< HEAD
 ## 🚀 Usage
+
 ### Encrypt an Image
 ```bash
 python src/encrypt.py
 ```
+This loads `images/input.jpg`, converts it to DNA, encrypts it, applies chaotic scrambling, and saves the result to `images/encrypted.npy`.
 
-### Decrypt the Image
+### Decrypt an Image
 ```bash
 python src/decrypt.py
 ```
+This loads the encrypted data, unscrambles it using the same chaotic sequence, decrypts it, converts from DNA back to an image, and saves the result to `images/decrypted.png`.
 
-## 📝 Folder Structure
-```
-👤 dna-image-encryption
-│── 📂 src
-│   ├── encrypt.py  # Encryption process
-│   ├── decrypt.py  # Decryption process
-│   ├── dna_crypto.py  # DNA encoding/decoding logic
-│   ├── chaos.py  # Chaotic scrambling functions
-│   ├── hybrid_crypto.py  # AES + XOR encryption
-│   ├── utils.py  # Helper functions
-│── 📂 images
-│   ├── original.png
-│   ├── encrypted.bin
-│   ├── decrypted.png
-│── requirements.txt
-│── README.md
-```
-=======
-### 2️⃣ Run Encryption
+### Verify Image Integrity
 ```bash
-python encrypt.py --input images/sample.png --output images/encrypted.bin
+python src/blockchain.py
 ```
+This generates a hash of the encrypted image and adds it to the blockchain ledger, allowing future verification of image integrity.
 
-### 3️⃣ Run Decryption
+### Analyze Histograms
 ```bash
-python decrypt.py --input images/encrypted.bin --output images/decrypted.png
+python src/histogram_analysis.py
+```
+This creates histograms of both the original and encrypted images to verify encryption quality by ensuring the encrypted histogram shows uniform distribution.
+
+## 📂 Project Structure
+```
+image_encryption_chaos-using-AES/
+│── README.md                # This documentation
+│── requirements.txt         # Required Python packages
+│── images/                  # Image storage directory
+│   ├── input.jpg            # Original input image
+│   ├── encrypted.npy        # Encrypted image data
+│   ├── original_shape.npy   # Original image dimensions
+│   └── decrypted.png        # Decrypted output image
+│── rsa_keys/                # RSA key storage
+│   ├── private.pem          # RSA private key
+│   └── public.pem           # RSA public key
+│── src/                     # Source code
+    ├── encrypt.py           # Main encryption process
+    ├── decrypt.py           # Main decryption process
+    ├── dna_crypto.py        # DNA encoding/decoding
+    ├── chaos.py             # Chaotic scrambling functions
+    ├── hybrid_crypto.py     # AES encryption implementation
+    ├── blockchain.py        # Blockchain integrity verification
+    ├── histogram_analysis.py # Security validation through histograms
+    ├── utils.py             # Helper functions
+    └── aes_key.bin          # AES encryption key
 ```
 
-### 4️⃣ Verify Integrity via Blockchain
-```bash
-python blockchain.py --verify images/encrypted.bin
-```
+## 🔬 Encryption Process
+1. **Image to DNA**: Convert pixel values to binary, then map to DNA nucleotides
+2. **AES Encryption**: Encrypt the DNA sequence using AES
+3. **Chaotic Scrambling**: Randomize the encrypted data using logistic map
+4. **Blockchain Registration**: Generate and store hash for integrity verification
+5. **Histogram Analysis**: Compare frequency distributions to verify encryption quality
 
-### 📊 Histogram Analysis
-Run this command to compare original vs. encrypted images:
-```bash
-python histogram_analysis.py --input images/sample.png --encrypted images/encrypted.bin
-```
-**Output:** Two histogram images will be generated:
-- `histogramoriginal.png`
-- `histogramencrypted.png`
->>>>>>> 1999b992e8c30c15e755810997ec60d75a0b0cde
+## 🛡️ Security Features
+| Security Layer | Implementation | Benefit |
+|----------------|----------------|---------|
+| DNA Encoding | Binary-to-nucleotide mapping | Adds biological-inspired obfuscation |
+| Chaos Theory | Logistic map for scrambling | Creates non-linear, sensitive patterns |
+| AES Encryption | Standard cryptographic algorithm | Provides proven security foundation |
+| Blockchain | Decentralized hash storage | Enables tamper detection and verification |
+| Histogram Analysis | Statistical comparison | Validates encryption effectiveness |
 
-## 📈 Contrast: DNA-Based vs AES + Chaos + Blockchain
-| Feature | DNA-Based Encryption | AES + Chaos + Blockchain |
-|---------|----------------------|-------------------------|
-| Security Level | Ultra-High (Biological Encoding + Chaos) | High (AES + Chaos + Blockchain) |
-| Encryption Type | DNA Encoding + Chaos + AES | AES + Chaotic Scrambling |
-| Randomness | High (DNA & Chaos combined) | Moderate (Chaos only) |
-| Processing Time | Slower (DNA mapping overhead) | Faster (AES-based) |
-| Best For | Research, Bio-inspired Security | High-Speed Secure Applications |
-
-<<<<<<< HEAD
-## 🔬 Research Significance
-- DNA cryptography is a rising field in quantum-secure encryption.
-- This project enhances security by integrating biology and mathematics.
-
-## 📝 License
-MIT License
-=======
-## 🛡️ Security & Cryptographic Techniques
-
-| Method         | Description |
-|---------------|------------|
-| **AES-256**   | Symmetric encryption for image data 🔐 |
-| **Chaos Maps** | Pseudorandom chaotic sequences for key generation 🌪️ |
-| **RSA-4096**   | Asymmetric encryption for AES key exchange 🔑 |
-| **Blockchain** | Integrity verification using decentralized ledger ⛓️ |
-
----
-
-## 🤖 Future Enhancements
-
-🔹 Quantum-Safe Cryptography (Post-Quantum Algorithms)  
-🔹 Advanced Blockchain Consensus (PoW / PoS)  
-🔹 Homomorphic Encryption for Secure Computation  
-
----
+## 🚧 Future Enhancements
+- Quantum-resistant cryptography integration
+- Advanced DNA encoding rules with multiple mapping tables
+- GPU acceleration for faster processing of large images
+- Multi-layer chaotic systems for enhanced randomness
 
 ## 👨‍💻 Author
 **Sreevallabh04 | Cybersecurity & Cryptography Enthusiast**  
 📧 Email: srivallabhkakarala@gmail.com  
-🌟 GitHub: github.com/sreevallabh04  
+🌟 GitHub: github.com/sreevallabh04
 
----
-
-## 🔐 "Encrypt, Secure, and Trust Your Data." 🚀
-
----
-
-## 📚 License
-This project is Open Source!
-
----
->>>>>>> 1999b992e8c30c15e755810997ec60d75a0b0cde
-
+## 📄 License
+This project is available under the MIT License.

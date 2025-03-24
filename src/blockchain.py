@@ -58,7 +58,7 @@ class Blockchain:
 
 def hash_encrypted_image():
     """Generate SHA-256 hash of the encrypted image."""
-    with open("images/encrypted.bin", "rb") as f:
+    with open("images/encrypted.npy", "rb") as f:
         file_bytes = f.read()
     return hashlib.sha256(file_bytes).hexdigest()
 

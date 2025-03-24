@@ -35,8 +35,16 @@ else:
         save_histogram(original_image, "Original Image Histogram", "histograminput.jpg", color_mode="color")
 
 # Load Encrypted Image Data
-with open("images/encrypted.bin", "rb") as f:
-    encrypted_bytes = np.frombuffer(f.read(), dtype=np.uint8)
+encrypted_data = np.load("images/encrypted.npy", allow_pickle=True)
+
+# Convert to a form suitable for histogram analysis
+# If data is bytes/strings, convert to numerical representation
+if isinstance(encrypted_data[0], (str, bytes, np.bytes_)):
+    # Convert each character/byte to its ASCII value
+    encrypted_bytes = np.array([ord(c) for c in ''.join(encrypted_data.tolist())], dtype=np.uint8)
+else:
+    # If already numerical, just flatten and ensure uint8 type
+    encrypted_bytes = np.array(encrypted_data).flatten().astype(np.uint8)
 
 # Save Histogram of Encrypted Data Directly
 save_histogram(encrypted_bytes, "Encrypted Image Histogram", "histogramencrypted.png", color_mode="gray")
