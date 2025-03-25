@@ -1,6 +1,6 @@
 import numpy as np
 
-# DNA Encoding Table
+# Simple DNA Encoding/Decoding with fixed rule set for stability
 DNA_ENCODING = {
     "00": "A", "01": "T", "10": "C", "11": "G"
 }
@@ -25,7 +25,20 @@ def dna_to_image(dna_sequence, shape):
     
     expected_size = np.prod(shape) * 8  # Expected bits
     if len(binary_array) != expected_size:
-        raise ValueError(f"Size mismatch! Expected {expected_size}, but got {len(binary_array)}")
+        # Handle size mismatch
+        if len(binary_array) < expected_size:
+            # Pad with zeros
+            padding = np.zeros(expected_size - len(binary_array), dtype=np.uint8)
+            binary_array = np.concatenate([binary_array, padding])
+        else:
+            # Truncate
+            binary_array = binary_array[:expected_size]
 
     image = np.packbits(binary_array)  # Convert back to bytes
     return image.reshape(shape)
+
+# If module is run directly, print out encoding table
+if __name__ == "__main__":
+    print("[ℹ] Using fixed DNA encoding scheme:")
+    for binary, nucleotide in DNA_ENCODING.items():
+        print(f"  {binary} -> {nucleotide}")

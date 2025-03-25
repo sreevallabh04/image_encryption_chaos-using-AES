@@ -38,9 +38,13 @@ else:
 encrypted_data = np.load("images/encrypted.npy", allow_pickle=True)
 
 # Convert to a form suitable for histogram analysis
-# If data is bytes/strings, convert to numerical representation
-if isinstance(encrypted_data[0], (str, bytes, np.bytes_)):
-    # Convert each character/byte to its ASCII value
+# Check if encrypted data is a scalar or 0-dimensional array
+if encrypted_data.ndim == 0:
+    # If scalar, convert the string to a list of ASCII values
+    encrypted_str = str(encrypted_data.item())
+    encrypted_bytes = np.array([ord(c) for c in encrypted_str], dtype=np.uint8)
+elif isinstance(encrypted_data.item(0) if encrypted_data.size > 0 else None, (str, bytes, np.bytes_)):
+    # If array of strings/bytes, convert each to ASCII values
     encrypted_bytes = np.array([ord(c) for c in ''.join(encrypted_data.tolist())], dtype=np.uint8)
 else:
     # If already numerical, just flatten and ensure uint8 type
