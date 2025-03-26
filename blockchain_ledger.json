@@ -1,32 +1,14 @@
 [
     {
         "index": 0,
-        "timestamp": 1742825484.2405257,
+        "timestamp": 1742963283.124496,
         "previous_hash": "0",
         "image_hash": "GENESIS_BLOCK"
     },
     {
         "index": 1,
-        "timestamp": 1742825533.2396946,
-        "previous_hash": "d11341cd7fe5d0ad0bafbbb3ca9e407f6106d647c675ec1ff1dfbdd2565e272e",
-        "image_hash": "9345591714627d71f88e3457c6c162cd24fe99b10c0cab6cc4f202f43bd87104"
-    },
-    {
-        "index": 2,
-        "timestamp": 1742873891.7085898,
-        "previous_hash": "b83989f8760cb6fe3f7b4fdeaced22fe9b658d385f683610d80837b9b68cae35",
-        "image_hash": "9345591714627d71f88e3457c6c162cd24fe99b10c0cab6cc4f202f43bd87104"
-    },
-    {
-        "index": 3,
-        "timestamp": 1742875177.0287902,
-        "previous_hash": "e059387cc3d7d9cb3c0582bdf84101e75e7c7be4d9ceae4ab95380dce2bee013",
-        "image_hash": "1c5168c8b88ba6a2486c35e2d15362e42aad76bcba359d54fe687d7aff6bc98a"
-    },
-    {
-        "index": 4,
-        "timestamp": 1742876081.823222,
-        "previous_hash": "ae7a9bdbf9db789a631314764433cda23dd405b79cc8946005652fc9871fc537",
-        "image_hash": "ac15a271e6d584c8af8c02e8187a87eb0be06cf874d57c5b97d5a962a1de3748"
+        "timestamp": 1742963283.1465225,
+        "previous_hash": "3862361cad8918c48fc4ea89505eaa54fc6dce0f40c302a36dffce1f654b12f3",
+        "image_hash": "6062bffbe9df2bd292009959d0ee2f1021efa1c33b68e6a940456b5f1cb74150"
     }
 ]
