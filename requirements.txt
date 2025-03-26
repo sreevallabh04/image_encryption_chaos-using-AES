@@ -1,3 +1,6 @@
 pycryptodome
 opencv-python
 numpy
+matplotlib
+scikit-image
+scipy
