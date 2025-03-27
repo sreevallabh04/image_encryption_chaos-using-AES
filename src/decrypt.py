@@ -44,8 +44,8 @@ def decrypt_image(encrypted_path=None, shape_path=None, output_path=None, stego_
     print(f"[3/6] Loading original shape from {shape_path}...")
     original_shape = np.load(shape_path, allow_pickle=True)
     
-    # REORDERED: First decrypt the AES-GCM encrypted data
-    print("[4/6] Decrypting DNA sequence using AES-GCM...")
+    # REORDERED: First decrypt the AES-CBC encrypted data
+    print("[4/6] Decrypting DNA sequence using AES-CBC...")
     decrypted_dna = decrypt_dna(encrypted_data)
     
     # Then unscramble the decrypted data

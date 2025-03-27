@@ -38,7 +38,7 @@ def encrypt_image(image_path, output_dir="images", use_steganography=False, cove
     scrambled_dna = scramble_pixels(dna_sequence)
     
     # Encrypt scrambled DNA sequence
-    print("[4/5] Encrypting DNA sequence using AES-GCM...")
+    print("[4/5] Encrypting DNA sequence using AES-CBC...")
     encrypted_dna = encrypt_dna(scrambled_dna)
     
     # Save encrypted data and original shape

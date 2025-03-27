@@ -1,10 +1,10 @@
 # 🧬 Enhanced DNA-Based Image Encryption with Chaos Theory & Blockchain
 
 ## 📌 Overview
-This project implements a sophisticated **hybrid image encryption system** that combines DNA cryptography, chaos theory, AES encryption, and blockchain technology with several advanced security enhancements. The system provides ultra-high security by encoding images into DNA sequences using dynamic rule switching, scrambling them using multiple chaotic maps, encrypting with AES-GCM, hiding encrypted data using steganography, and verifying integrity through blockchain.
+This project implements a sophisticated **hybrid image encryption system** that combines DNA cryptography, chaos theory, AES encryption, and blockchain technology with several advanced security enhancements. The system provides ultra-high security by encoding images into DNA sequences using dynamic rule switching, scrambling them using multiple chaotic maps, encrypting with standard AES (CBC mode), hiding encrypted data using steganography, and verifying integrity through blockchain.
 
 ## 🔄 Recent Enhancements
-- **AES-GCM Encryption**: Replaced ECB mode with GCM for authenticated encryption
+- **Standard AES Encryption**: Implemented AES-CBC mode for enhanced security
 - **Dynamic DNA Encoding**: Implemented multiple rule sets with key-based rule switching
 - **Hybrid Chaotic System**: Integrated four different chaotic maps for stronger scrambling
 - **Steganography Support**: Added capability to hide encrypted data in cover images
@@ -14,7 +14,7 @@ This project implements a sophisticated **hybrid image encryption system** that 
 ## 🔑 Key Features
 - **Advanced DNA Encoding & Decoding**: Converts image data to/from DNA sequences (A, T, C, G) using multiple dynamic rule sets
 - **Hybrid Chaotic Scrambling**: Applies multiple chaos maps (logistic, sine, tent, cubic) for enhanced randomization
-- **AES-GCM Encryption**: Ensures robust security with authenticated encryption
+- **AES-CBC Encryption**: Ensures robust security with industry-standard encryption
 - **Steganography**: Hides encrypted data within ordinary-looking images
 - **Blockchain Integration**: Verifies image integrity using a decentralized ledger
 - **Histogram Analysis**: Validates encryption quality by comparing original vs. encrypted histograms
@@ -105,7 +105,7 @@ image_encryption_chaos-using-AES/
     ├── decrypt.py           # Main decryption process
     ├── dna_crypto.py        # Enhanced DNA encoding/decoding with dynamic rules
     ├── chaos.py             # Hybrid chaotic scrambling with multiple maps
-    ├── hybrid_crypto.py     # AES-GCM encryption implementation
+    ├── hybrid_crypto.py     # AES-CBC encryption implementation
     ├── steganography.py     # LSB steganography to hide encrypted data
     ├── blockchain.py        # Blockchain integrity verification
     ├── histogram_analysis.py # Security validation through histograms
@@ -117,7 +117,7 @@ image_encryption_chaos-using-AES/
 
 ## 🔬 Enhanced Encryption Process
 1. **Image to DNA**: Convert pixel values to binary, then map to DNA nucleotides using dynamic rule switching
-2. **AES-GCM Encryption**: Encrypt the DNA sequence using authenticated encryption
+2. **AES-CBC Encryption**: Encrypt the DNA sequence using standard AES encryption
 3. **Hybrid Chaotic Scrambling**: Randomize the encrypted data using multiple chaotic maps
 4. **Steganography (Optional)**: Hide encrypted data in an ordinary-looking cover image
 5. **Blockchain Registration**: Generate and store hash for integrity verification
@@ -128,10 +128,75 @@ image_encryption_chaos-using-AES/
 |----------------|----------------|---------|
 | Dynamic DNA Encoding | Multiple rule sets with key-based switching | Prevents statistical analysis attacks |
 | Hybrid Chaos Theory | Four chaotic maps (logistic, sine, tent, cubic) | Provides complex non-linear scrambling |
-| AES-GCM Encryption | Authenticated encryption with proper key derivation | Ensures confidentiality and authenticity |
+| AES-CBC Encryption | Standard block cipher encryption with proper key derivation | Ensures confidentiality with industry-proven encryption |
 | Steganography | LSB hiding in cover images | Adds security through obscurity |
 | Blockchain | Decentralized hash storage | Enables tamper detection and verification |
 | Histogram Analysis | Statistical comparison | Validates encryption effectiveness |
+
+## 📐 Mathematical Formulation
+
+This section provides the mathematical foundation behind the encryption process.
+
+### DNA Encoding
+
+The DNA encoding process maps binary pairs to DNA nucleotides:
+
+```
+D(b₁b₂) = {
+    A if b₁b₂ = 00
+    T if b₁b₂ = 01
+    C if b₁b₂ = 10
+    G if b₁b₂ = 11
+}
+```
+
+For an image with pixel values P, we convert each pixel to 8-bit binary and apply the DNA mapping function:
+
+```
+DNA(P) = [D(b₁b₂), D(b₃b₄), ..., D(b₂ₘ₋₁b₂ₘ)]
+```
+
+### Chaotic Scrambling
+
+We use the logistic map to generate a pseudo-random sequence for scrambling:
+
+```
+xₙ₊₁ = r·xₙ·(1 - xₙ)
+```
+
+where r = 3.99 (chaotic regime) and x₀ = 0.5 (seed value). The scrambling indices are:
+
+```
+I = argsort([x₁, x₂, ..., xₗ])
+```
+
+The scrambled DNA sequence is then:
+
+```
+SDNA = [DNA[I₁], DNA[I₂], ..., DNA[Iₗ]]
+```
+
+### AES-CBC Encryption
+
+The AES-CBC encryption process can be described mathematically as:
+
+1. Pad the plaintext P to ensure its length is a multiple of 16 bytes
+2. Generate a random 16-byte Initialization Vector (IV)
+3. Encrypt each block using:
+   ```
+   C₁ = E(K, P'₁ ⊕ IV)
+   C₂ = E(K, P'₂ ⊕ C₁)
+   ...
+   Cₙ = E(K, P'ₙ ⊕ Cₙ₋₁)
+   ```
+   where E(K,X) is the AES encryption function and ⊕ is bitwise XOR
+
+4. The final ciphertext is:
+   ```
+   Ciphertext = IV || C₁ || C₂ || ... || Cₙ
+   ```
+
+For more detailed mathematical explanation, see the `Mathematical_Formulation_of_Encryption.md` file.
 
 ## 🚧 Future Improvements
 - Quantum-resistant cryptography integration
